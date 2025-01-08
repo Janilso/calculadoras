@@ -29,4 +29,9 @@ export type InputProps = TextFieldProps & {
   InputProps?: Partial<MuiInputProps>;
   endAdornment?: React.ReactNode;
   isInputMoney?: boolean;
+  about?: string;
+};
+
+export type InputAboutProps = {
+  about: string;
 };
