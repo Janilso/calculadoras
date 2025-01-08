@@ -13,11 +13,12 @@ const HomePage: React.FC = () => {
     <BasePage
       title={
         <>
-          Calculadora <br /> Saque Aniversário
+          Calculadora <br /> Salário Líquido
         </>
       }
-      subtitle="Tenha uma previsão do valor do Saque Aniversário de seu FGTS"
-      //   styles={{ title: styles.title, right: styles.right }}
+      subtitle="Saiba o valor líquido que você receberá 
+      por mês, já com os descontos aplicados."
+      styles={{ title: styles.title }}
     >
       <FormProvider {...methods}>
         <Box
@@ -111,6 +112,8 @@ const HomePage: React.FC = () => {
                 outrosDescontos: 2.0,
                 salarioLiquido: 7130.08,
               }}
+              sx={styles.result}
+              // loading
             />
           </Grid2>
         </Box>

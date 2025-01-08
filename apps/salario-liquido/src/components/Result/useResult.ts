@@ -3,7 +3,7 @@ import { ResultProps } from './types';
 import { formatMoney } from '@calculadoras/core/helpers';
 import { appColors } from '@calculadoras/ui/theme';
 
-const useResult = ({ data }: Required<ResultProps>) => {
+const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
   const dataFormated = useMemo(
     () => ({
       salarioLiquido: formatMoney(data?.salarioLiquido ?? 0),

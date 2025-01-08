@@ -9,7 +9,6 @@ export const styles = makeSxStyles({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: { xs: 'column', sm: 'row' },
     p: 1.5,
     border: '1px solid',
     borderColor: (theme) => alpha(theme.appColors.primaryLight, 0.5),
@@ -20,13 +19,14 @@ export const styles = makeSxStyles({
     },
 
     '&:first-of-type': {
-      borderRadius: '8px 0 0 0',
+      borderRadius: { xs: '8px 8px 0 0', sm: '8px 0 0 0' },
       border: 'none',
       bgcolor: 'appColors.primaryMedium',
       flexDirection: 'column',
-      justifyContent: 'flex-start',
+      justifyContent: 'space-evenly',
       alignItems: 'center',
       gap: 2,
+      flex: 1,
 
       '& .MuiTypography-root': {
         color: 'appColors.secondary',
@@ -39,7 +39,7 @@ export const styles = makeSxStyles({
       },
     },
     '&:last-of-type': {
-      borderRadius: '0 0 0 8px',
+      borderRadius: { xs: 0, sm: '0 0 0 8px' },
     },
   },
   lineLabel: {
@@ -55,18 +55,28 @@ export const styles = makeSxStyles({
   },
   graphic: {
     border: '1px solid',
+    borderLeft: { xs: null, sm: 'none' },
+    borderTop: (theme) => ({
+      xs: 'none',
+      sm: `1px solid ${alpha(theme.appColors.primaryLight, 0.5)}`,
+    }),
     borderColor: (theme) => alpha(theme.appColors.primaryLight, 0.5),
-    borderLeft: 'none',
-    borderRadius: '0 8px 8px 0',
+    borderRadius: { xs: '0 0 8px 8px', sm: '0 8px 8px 0' },
     display: 'flex',
-    // justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
+    flexDirection: { xs: 'row', sm: 'column' },
+    flexWrap: 'wrap',
+    justifyContent: { xs: 'center', sm: 'flex-start' },
+    p: { xs: 1, sm: 0 },
+
+    '& [class$=MuiResponsiveChart-container]': {
+      flexGrow: { xs: 0, sm: 1 },
+    },
   },
   legends: {
-    px: 1,
+    px: { xs: 1, md: 0.5, lg: 1 },
     pb: 1,
-    width: '100%',
+    width: { xs: 'fit-content', sm: '100%' },
     '& > .MuiBox-root': {
       display: 'flex',
       alignItems: 'center',
@@ -74,6 +84,7 @@ export const styles = makeSxStyles({
     },
     '& span': {
       width: 12,
+      minWidth: 12,
       height: 12,
       borderRadius: 12,
     },
@@ -83,8 +94,22 @@ export const styles = makeSxStyles({
     },
   },
   popper: {
-    '& .MuiChartsTooltip-valueCell': {
+    '& .MuiChartsTooltip-valueCell.MuiChartsTooltip-cell': {
       color: 'appColors.white',
     },
+  },
+  stack: {
+    '.MuiSkeleton-root': {
+      '&:first-of-type': {
+        borderRadius: '8px 0 0 0',
+      },
+      '&:last-of-type': {
+        borderRadius: '0 0 0 8px',
+      },
+    },
+  },
+  chart: {
+    // flexGrow: { xs: 0, sm: 1 },
+    color: 'red',
   },
 });
