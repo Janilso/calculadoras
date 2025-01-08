@@ -1,10 +1,11 @@
 {
-  "name": "@repo/ui",
-  "version": "0.0.0",
+  "name": "@calculadoras/ui",
+  "version": "1.0.0",
   "exports": {
-    "./counter": "./components/counter.ts",
-    "./header": "./components/header.ts",
-    "./setup-counter": "./utils/counter.ts"
+    "./components": "./components/index.ts",
+    "./theme": "./theme/index.ts",
+    "./utils": "./utils/index.ts",
+    "./icons": "./assets/icons/index.ts"
   },
   "license": "MIT",
   "scripts": {
@@ -15,5 +16,12 @@
     "@repo/typescript-config": "*",
     "eslint": "^8.57.0",
     "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "@calculadoras/core": "*",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.3.1",
+    "react-router": "^7.1.1"
   }
 }

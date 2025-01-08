@@ -1,0 +1,19 @@
+{
+    "name": "@calculadoras/core",
+    "type": "module",
+    "scripts": {
+        "dev": "tsc --watch",
+        "build": "tsc"
+    },
+    "exports": {
+        "./helpers": "./src/helpers/index.ts",
+        "./services": "./src/services/index.ts"
+    },
+    "devDependencies": {
+        "@repo/typescript-config": "*",
+        "typescript": "latest"
+    },
+    "dependencies": {
+        "axios": "^1.7.9"
+    }
+}

@@ -1,6 +1,4 @@
-// utils
-export { setupCounter } from "./utils/counter";
-
-// components
-export { Header } from "./components/header";
-export { Counter } from "./components/counter";
+export * from './components';
+export * from './theme';
+export * from './utils';
+export * from './assets/icons';
