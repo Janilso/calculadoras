@@ -10,14 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@calculadoras/core": "*",
     "@calculadoras/ui": "*",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.3.1",
+    "@mui/x-charts": "^7.23.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2"
-
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -32,6 +33,5 @@
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
     "vite-plugin-svgr": "^4.3.0"
-
   }
 }

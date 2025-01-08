@@ -1,3 +1,4 @@
+import { appColors } from './appColors';
 import { ThemeProvider } from './ThemeProvider';
 
-export { ThemeProvider };
+export { ThemeProvider, appColors };

@@ -4,6 +4,7 @@ import { FormProvider } from 'react-hook-form';
 import useHomePage from './useHomePage';
 import { Box, Grid2 } from '@mui/material';
 import { styles } from './styles';
+import Result from '../../components/Result';
 
 const HomePage: React.FC = () => {
   const { methods, handleSubmit, onSubmit, optionsDependentes } = useHomePage();
@@ -103,6 +104,14 @@ const HomePage: React.FC = () => {
                 fullWidth
               />
             </Grid2>
+            <Result
+              data={{
+                inss: 908.85,
+                irff: 1439.07,
+                outrosDescontos: 2.0,
+                salarioLiquido: 7130.08,
+              }}
+            />
           </Grid2>
         </Box>
       </FormProvider>

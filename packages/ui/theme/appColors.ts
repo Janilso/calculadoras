@@ -4,4 +4,5 @@ export const appColors = {
   primaryLight: '#0D63A5',
   secondary: '#FFD717',
   white: '#ffff',
+  lightBlue: '#AAD2FC',
 };
