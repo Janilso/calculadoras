@@ -45,7 +45,6 @@ const Result: React.FC<ResultProps> = ({ data, sx, loading }) => {
                     additionalRadius: -10,
                     color: appColors.primaryLight,
                   },
-                  paddingAngle: 0,
                 },
               ]}
               width={130}

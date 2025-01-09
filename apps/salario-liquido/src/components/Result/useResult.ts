@@ -13,6 +13,7 @@ const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
     }),
     [data]
   );
+
   const dataResult = useMemo(() => {
     const { inss, irff, outrosDescontos, salarioLiquido } = dataFormated;
     return [
@@ -24,38 +25,41 @@ const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
       { label: 'Imposto de renda', value: irff },
       { label: 'Outros Descontos', value: outrosDescontos },
     ];
-  }, [data]);
+  }, [dataFormated]);
 
   const getLabelLegend = (text: string, value: string) => {
     return `${text}: ${value}`;
   };
 
-  const dataCharts = [
-    {
-      id: 0,
-      value: data?.inss ?? 0,
-      label: 'INSS',
-      color: appColors.primaryLight,
-    },
-    {
-      id: 1,
-      value: data?.irff ?? 0,
-      label: 'IRFF',
-      color: appColors.secondary,
-    },
-    {
-      id: 2,
-      value: data?.outrosDescontos ?? 0,
-      label: 'Outros descontos',
-      color: appColors.lightBlue,
-    },
-    {
-      id: 3,
-      value: data?.salarioLiquido ?? 0,
-      label: 'Salário Líquido',
-      color: appColors.primaryMedium,
-    },
-  ];
+  const dataCharts = useMemo(
+    () => [
+      {
+        id: 0,
+        value: data?.inss ?? 0,
+        label: 'INSS',
+        color: appColors.primaryLight,
+      },
+      {
+        id: 1,
+        value: data?.irff ?? 0,
+        label: 'IRFF',
+        color: appColors.secondary,
+      },
+      {
+        id: 2,
+        value: data?.outrosDescontos ?? 0,
+        label: 'Outros descontos',
+        color: appColors.lightBlue,
+      },
+      {
+        id: 3,
+        value: data?.salarioLiquido ?? 0,
+        label: 'Salário Líquido',
+        color: appColors.primaryMedium,
+      },
+    ],
+    [data]
+  );
 
   const legends = useMemo(() => {
     const { inss, irff, outrosDescontos, salarioLiquido } = dataFormated;
@@ -72,7 +76,7 @@ const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
         bgcolor: appColors.lightBlue,
       },
     ];
-  }, []);
+  }, [dataFormated]);
 
   return { dataResult, dataCharts, legends };
 };

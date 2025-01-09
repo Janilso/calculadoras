@@ -101,15 +101,17 @@ export const styles = makeSxStyles({
   stack: {
     '.MuiSkeleton-root': {
       '&:first-of-type': {
-        borderRadius: '8px 0 0 0',
+        borderRadius: { xs: '8px 8px 0 0', sm: '8px 0 0 0' },
       },
       '&:last-of-type': {
-        borderRadius: '0 0 0 8px',
+        borderRadius: { xs: 0, sm: '0 0 0 8px' },
       },
     },
   },
-  chart: {
-    // flexGrow: { xs: 0, sm: 1 },
-    color: 'red',
+  stackGraphic: {
+    flexDirection: { xs: 'row', sm: 'column' },
+    flexWrap: 'wrap',
+    gap: { xs: 2, sm: 0 },
+    justifyContent: { xs: 'center', sm: 'flex-start' },
   },
 });

@@ -7,7 +7,8 @@ import { styles } from './styles';
 import Result from '../../components/Result';
 
 const HomePage: React.FC = () => {
-  const { methods, handleSubmit, onSubmit, optionsDependentes } = useHomePage();
+  const { methods, handleSubmit, onSubmit, optionsDependentes, data, loading } =
+    useHomePage();
 
   return (
     <BasePage
@@ -31,20 +32,20 @@ const HomePage: React.FC = () => {
               <Input
                 label="Salário bruto"
                 name="salarioBruto"
-                about={`Salário registrado na carteira 
+                about="Salário registrado na carteira 
                 de trabalho, correspondente à remuneração 
                 mensal do trabalhador, sem considerar os 
-                descontos obrigatórios.`}
+                descontos obrigatórios."
                 fullWidth
                 isInputMoney
               />
               <Input
                 label="Número de dependentes"
                 name="dependentes"
-                about={`Número de pessoa(s) sob tutela ou 
+                about="Número de pessoa(s) sob tutela ou 
                 curatela do trabalhador, que podem ser 
                 incluídas como dependentes no Imposto de 
-                Renda.`}
+                Renda."
                 defaultValue={0}
                 fullWidth
                 slotProps={{
@@ -67,21 +68,21 @@ const HomePage: React.FC = () => {
               <Input
                 label="Pensão alimentícia"
                 name="pensaoAlimenticia"
-                about={`Valor destinado ao sustento de 
+                about="Valor destinado ao sustento de 
                 dependentes, sendo priorizado antes de 
                 outros descontos, como impostos e 
-                previdência.`}
+                previdência."
                 fullWidth
                 isInputMoney
               />
               <Input
                 label="Outros descontos"
                 name="outrosDescontos"
-                about={`Demais descontos acordados com 
+                about="Demais descontos acordados com 
                 a empresa, registrados no contracheque, 
                 como: alimentação, plano de saúde, 
                 previdência privada, vales, entre 
-                outros.`}
+                outros."
                 fullWidth
                 isInputMoney
               />
@@ -90,11 +91,11 @@ const HomePage: React.FC = () => {
               <Input
                 label="Benefícios"
                 name="beneficios"
-                about={`Valores adicionais recebidos 
+                about="Valores adicionais recebidos 
                 além do salário, mas que não são 
                 considerados parte integrante dele, 
                 como: auxílio creche, home office, 
-                alimentação, entre outros.`}
+                alimentação, entre outros."
                 fullWidth
                 isInputMoney
               />
@@ -105,16 +106,18 @@ const HomePage: React.FC = () => {
                 fullWidth
               />
             </Grid2>
-            <Result
-              data={{
-                inss: 908.85,
-                irff: 1439.07,
-                outrosDescontos: 2.0,
-                salarioLiquido: 7130.08,
-              }}
-              sx={styles.result}
-              // loading
-            />
+            {data || loading ? (
+              <Result
+                data={{
+                  inss: data?.inss,
+                  irff: data?.irff,
+                  outrosDescontos: data?.outrosDescontos,
+                  salarioLiquido: data?.salarioLiquido,
+                }}
+                sx={styles.result}
+                loading={loading}
+              />
+            ) : null}
           </Grid2>
         </Box>
       </FormProvider>
