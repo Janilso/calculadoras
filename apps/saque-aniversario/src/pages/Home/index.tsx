@@ -1,40 +1,15 @@
-import { removeMoneyFormat } from '@calculadoras/core/helpers';
-import { serviceSaqueAniversario } from '@calculadoras/core/services';
 import { BasePage, Button, Input } from '@calculadoras/ui/components';
 import { IconFgts } from '@calculadoras/ui/icons';
 import { Box, Grid2 } from '@mui/material';
-import React, { useMemo, useState } from 'react';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import React from 'react';
+import { FormProvider } from 'react-hook-form';
 import TabelResult from '../../components/TabelResult';
-import { API_URI } from '../../utils/functions/variables';
-import { getOptionMonth } from '../../utils/functions/getOptionMonth';
 import { styles } from './styles';
-import { FormValues, IStateDataResult } from './types';
+import useHomePage from './useHomePage';
 
 const HomePage: React.FC = () => {
-  const methods = useForm<FormValues>();
-  const { handleSubmit } = methods;
-  const optionsMonth = useMemo(() => getOptionMonth(), []);
-  const [dataResult, setDataResult] = useState<IStateDataResult>({
-    loading: true,
-  });
-
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const {
-      mesNascimento: dataMesNascimento,
-      salarioBruto,
-      saldoFgts: dataSaldo,
-    } = data;
-    const mesNascimento = parseFloat(dataMesNascimento);
-    const salario = removeMoneyFormat(salarioBruto) as number;
-    const saldoFgts = removeMoneyFormat(dataSaldo) as number;
-    setDataResult((prev) => ({ ...prev, loading: true, previsaoSaque: 0 }));
-    serviceSaqueAniversario(API_URI, { mesNascimento, salario, saldoFgts })
-      .then((result) => {
-        setDataResult({ loading: false, ...result });
-      })
-      .catch(() => setDataResult({ loading: false }));
-  };
+  const { data, handleSubmit, loading, methods, onSubmit, optionsMonth } =
+    useHomePage();
 
   return (
     <BasePage
@@ -91,13 +66,13 @@ const HomePage: React.FC = () => {
             />
           </Grid2>
 
-          {dataResult.previsaoSaque != null ? (
+          {data || loading ? (
             <TabelResult
-              saldoFgts={dataResult.saldoFgts}
-              somaLancamentos={dataResult.somaLancamentos}
-              saldoFuturoTotal={dataResult.saldoFuturoTotal}
-              previsaoSaque={dataResult.previsaoSaque}
-              loading={dataResult.loading}
+              saldoFgts={data?.saldoFgts}
+              somaLancamentos={data?.somaLancamentos}
+              saldoFuturoTotal={data?.saldoFuturoTotal}
+              previsaoSaque={data?.previsaoSaque}
+              loading={loading}
               sx={styles.result}
             />
           ) : null}
