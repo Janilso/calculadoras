@@ -6,7 +6,7 @@ import { Box, Grid2 } from '@mui/material';
 import React, { useMemo, useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import TabelResult from '../../components/TabelResult';
-import { API_URI } from '../../utils/functions/configs';
+import { API_URI } from '../../utils/functions/variables';
 import { getOptionMonth } from '../../utils/functions/getOptionMonth';
 import { styles } from './styles';
 import { FormValues, IStateDataResult } from './types';

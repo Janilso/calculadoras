@@ -1,10 +1,10 @@
 import { Box, Grid2 } from '@mui/material';
 import React from 'react';
 import AnimatedContent from '../AnimatedContent';
-import { ImageError404 } from '../../assets/icons';
 import { Button } from '../Button';
 import { styles } from './styles';
 import { useNavigate } from 'react-router';
+import { IconError404 } from '../../icons';
 
 const PageNotFound: React.FC = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const PageNotFound: React.FC = () => {
     <Grid2 container sx={styles.root}>
       <Box sx={styles.image}>
         <AnimatedContent type="moving2">
-          <ImageError404 />
+          <IconError404 />
         </AnimatedContent>
       </Box>
       <Grid2 justifyContent="center" container>

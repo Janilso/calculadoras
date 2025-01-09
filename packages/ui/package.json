@@ -5,7 +5,7 @@
     "./components": "./components/index.ts",
     "./theme": "./theme/index.ts",
     "./utils": "./utils/index.ts",
-    "./icons": "./assets/icons/index.ts"
+    "./icons": "./icons/index.ts"
   },
   "license": "MIT",
   "scripts": {

@@ -5,8 +5,7 @@
   "extends": "@repo/typescript-config/base.json",
   "include": [
     ".",
-    "assets/**/*",
-    "custom.d.ts"
+    "assets/**/*"
   ],
   "exclude": [
     "node_modules"
