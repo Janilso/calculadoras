@@ -15,19 +15,9 @@ export const serviceSalarioLiquido = (
   return new Promise(
     (resolve: (value: IResponseSalarioLiquido) => void, reject) => {
       api
-        .post(ENDPOINTS.URL_CALC_SAQUE(apiUri), payload)
+        .post(ENDPOINTS.URL_SALARIO_LIQUIDO(apiUri), payload)
         .then((response: IResponseSalarioLiquidoService) => {
-          const mock = {
-            ...response,
-            data: {
-              inss: 908.85,
-              irff: 1439.07,
-              outrosDescontos: 2.0,
-              salarioLiquido: 7130.08,
-            },
-          };
-
-          return resolve(mock.data);
+          return resolve(response.data);
         })
         .catch((err: AxiosError) =>
           reject(err?.response?.data ?? { mensage: 'Error request' })
