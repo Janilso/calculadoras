@@ -8,21 +8,21 @@ const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
     () => ({
       salarioLiquido: formatMoney(data?.salarioLiquido ?? 0),
       inss: formatMoney(data?.inss ?? 0),
-      irff: formatMoney(data?.irff ?? 0),
+      irrf: formatMoney(data?.irrf ?? 0),
       outrosDescontos: formatMoney(data?.outrosDescontos ?? 0),
     }),
     [data]
   );
 
   const dataResult = useMemo(() => {
-    const { inss, irff, outrosDescontos, salarioLiquido } = dataFormated;
+    const { inss, irrf, outrosDescontos, salarioLiquido } = dataFormated;
     return [
       {
         label: 'Seu salário líquido',
         value: salarioLiquido,
       },
       { label: 'INSS', value: inss },
-      { label: 'Imposto de renda', value: irff },
+      { label: 'Imposto de renda', value: irrf },
       { label: 'Outros Descontos', value: outrosDescontos },
     ];
   }, [dataFormated]);
@@ -41,8 +41,8 @@ const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
       },
       {
         id: 1,
-        value: data?.irff ?? 0,
-        label: 'IRFF',
+        value: data?.irrf ?? 0,
+        label: 'IRRF',
         color: appColors.secondary,
       },
       {
@@ -62,7 +62,7 @@ const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
   );
 
   const legends = useMemo(() => {
-    const { inss, irff, outrosDescontos, salarioLiquido } = dataFormated;
+    const { inss, irrf, outrosDescontos, salarioLiquido } = dataFormated;
 
     return [
       {
@@ -70,7 +70,7 @@ const useResult = ({ data }: Pick<ResultProps, 'data'>) => {
         bgcolor: appColors.primaryMedium,
       },
       { label: getLabelLegend('INSS', inss), bgcolor: appColors.primaryLight },
-      { label: getLabelLegend('IRFF', irff), bgcolor: appColors.secondary },
+      { label: getLabelLegend('IRRF', irrf), bgcolor: appColors.secondary },
       {
         label: getLabelLegend('Outros descontos', outrosDescontos),
         bgcolor: appColors.lightBlue,

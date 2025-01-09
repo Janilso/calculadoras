@@ -4,7 +4,7 @@ export type ResultProps = {
   data: {
     salarioLiquido?: number;
     inss?: number;
-    irff?: number;
+    irrf?: number;
     outrosDescontos?: number;
   };
   sx?: SxProps<Theme>;

@@ -110,7 +110,7 @@ const HomePage: React.FC = () => {
               <Result
                 data={{
                   inss: data?.inss,
-                  irff: data?.irff,
+                  irrf: data?.irrf,
                   outrosDescontos: data?.outrosDescontos,
                   salarioLiquido: data?.salarioLiquido,
                 }}

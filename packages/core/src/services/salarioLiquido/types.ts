@@ -11,7 +11,7 @@ export interface IRequestSalarioLiquido {
 export interface IResponseSalarioLiquido {
   salarioLiquido: number;
   inss: number;
-  irff: number;
+  irrf: number;
   outrosDescontos: number;
 }
 

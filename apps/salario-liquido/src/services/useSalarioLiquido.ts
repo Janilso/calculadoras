@@ -18,7 +18,7 @@ const useSalarioLiquido = () => {
       .catch(() =>
         setData({
           inss: 0,
-          irff: 0,
+          irrf: 0,
           outrosDescontos: 0,
           salarioLiquido: 0,
         })
