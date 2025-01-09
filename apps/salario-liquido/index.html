@@ -2,15 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta
+      name="description"
+      content="Calculadora de previsão de salário líquido atualizado."
+    />
+    <meta
+      property="og:description"
+      content="Calculadora de previsão de salário líquido atualizado,
+      com cálculo baseado nas tabelas atualizadas de Imposto de renda
+      (IRFF) e INSS."
+    />
+    <meta property="og:title" content="Calculadora Salário Líquido" />
+    <title>Calculadora Salário Líquido</title>
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&display=swap"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDF3WJ67FJ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-LDF3WJ67FJ');
+    </script>
   </head>
   <body>
     <div id="root"></div>
