@@ -12,9 +12,9 @@ import { IconWarning } from '../../icons';
 import { Button } from '../Button';
 import { styles } from './styles';
 import ButtonAboutTransition from './Transition';
-import { ButtonAboutType } from './types';
+import { ButtonAboutProps } from './types';
 
-const ButtonAbout: React.FC<PropsWithChildren<ButtonAboutType>> = ({
+const ButtonAbout: React.FC<PropsWithChildren<ButtonAboutProps>> = ({
   textButton = 'Sobre',
   titleModal,
   titleModalButton = 'Entendi',

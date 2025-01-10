@@ -1,4 +1,4 @@
-export type ButtonAboutType = {
+export type ButtonAboutProps = {
   textButton?: string;
   titleModal?: string;
   titleModalButton?: string;
