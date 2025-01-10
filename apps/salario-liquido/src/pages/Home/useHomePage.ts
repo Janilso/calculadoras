@@ -6,7 +6,8 @@ import {
 } from '@calculadoras/core/services/types';
 import { useMemo } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { API_URI } from '../../utils/functions/variables';
+import { getDataTable } from '../../utils/functions/getDataTable';
+import { API_URI, BASE_PARAMETERS } from '../../utils/functions/variables';
 import { FormValues } from './types';
 
 const useHomePage = () => {
@@ -22,6 +23,18 @@ const useHomePage = () => {
     RequestSalarioLiquidoType,
     ResponseSalarioLiquidoType
   >(serviceSalarioLiquido, API_URI);
+  const { inss, irrf } = BASE_PARAMETERS;
+
+  const dataInss = getDataTable(inss, false, [
+    'Salário (R$)',
+    'Alíquota',
+    'Parcela a deduzir (R$)',
+  ]);
+  const dataIrff = getDataTable(irrf, true, [
+    'Base de Cálculo (R$)',
+    'Alíquota',
+    'Parcela a deduzir (R$)',
+  ]);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     const salarioBruto = removeMoneyFormat(data?.salarioBruto ?? 0) as number;
@@ -43,7 +56,16 @@ const useHomePage = () => {
     });
   };
 
-  return { methods, onSubmit, handleSubmit, optionsDependentes, data, loading };
+  return {
+    methods,
+    onSubmit,
+    handleSubmit,
+    optionsDependentes,
+    data,
+    loading,
+    dataInss,
+    dataIrff,
+  };
 };
 
 export default useHomePage;

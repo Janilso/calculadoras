@@ -1,14 +1,53 @@
-import { BasePage, Button, Input } from '@calculadoras/ui/components';
-import React from 'react';
+import {
+  AccordionGroup,
+  BasePage,
+  Button,
+  ButtonAbout,
+  Input,
+  Tabel,
+} from '@calculadoras/ui/components';
+import { Box, DialogContentText, Grid2, Link, Typography } from '@mui/material';
+import React, { Fragment } from 'react';
 import { FormProvider } from 'react-hook-form';
-import useHomePage from './useHomePage';
-import { Box, Grid2 } from '@mui/material';
-import { styles } from './styles';
 import Result from '../../components/Result';
+import { styles } from './styles';
+import useHomePage from './useHomePage';
+import { RenderFonte } from './types';
 
 const HomePage: React.FC = () => {
-  const { methods, handleSubmit, onSubmit, optionsDependentes, data, loading } =
-    useHomePage();
+  const {
+    methods,
+    handleSubmit,
+    onSubmit,
+    optionsDependentes,
+    data,
+    loading,
+    dataInss,
+    dataIrff,
+  } = useHomePage();
+
+  const renderFonte: RenderFonte = (fontes) => {
+    if (!fontes) return [];
+    const isPlural = fontes?.length > 1;
+    return (
+      <>
+        {' '}
+        (Fonte{isPlural ? 's' : ''}:{' '}
+        {fontes?.map(({ link, titulo }, i) => {
+          const isLast = i === fontes?.length - 1;
+          return (
+            <Fragment key={link?.concat(i.toString())}>
+              <Link target="_blank" href={link}>
+                {titulo}
+              </Link>
+              {isPlural && !isLast ? ', ' : ''}
+            </Fragment>
+          );
+        })}
+        )
+      </>
+    );
+  };
 
   return (
     <BasePage
@@ -118,6 +157,100 @@ const HomePage: React.FC = () => {
                 loading={loading}
               />
             ) : null}
+            <ButtonAbout titleModal="Sobre o site e cálculos">
+              <DialogContentText sx={styles.textAbout}>
+                O site Calculadora Salário Líquido é uma ferramenta online
+                prática e eficiente que ajuda trabalhadores a entenderem quanto
+                dinheiro realmente receberão ao final do mês. Diferente do
+                salário bruto, que é o valor total acordado com o empregador, o
+                salário líquido é aquele que chega na conta bancária, já
+                descontados impostos, contribuições e outros encargos.
+              </DialogContentText>
+              <DialogContentText sx={styles.textAbout}>
+                O site não armazena qualquer tipo de dado fornecido pelo
+                usuário. Todos os dados solicitados são de uso exclusivo para o
+                cálculo do Salário Líquido, que leva em conta os seguintes itens
+                principais:
+              </DialogContentText>
+              <AccordionGroup sx={styles.accordion}>
+                {[
+                  {
+                    title: 'Salário bruto',
+                    details: (
+                      <>
+                        <Typography variant="subtitle1">
+                          É o ponto de partida para o cálculo. Trata-se do valor
+                          total acordado no contrato de trabalho, antes de
+                          qualquer dedução. Esse valor é utilizado como base
+                          para o cálculo do INSS (Instituto Nacional do Seguro
+                          Social), que é obrigatório e calculado de forma
+                          progressiva, conforme a tabela abaixo
+                          {renderFonte(dataInss?.fontes)}:
+                        </Typography>
+                        {dataInss?.data?.length ? (
+                          <Tabel sx={styles.tablel}>{dataInss.data}</Tabel>
+                        ) : null}
+                      </>
+                    ),
+                  },
+                  {
+                    title: 'Número de dependentes e pensão alimentícia',
+                    details: (
+                      <>
+                        <Typography variant="subtitle1">
+                          Juntamente com o salário bruto, são utilizados para o
+                          cálculo do Imposto de Renda Retido na Fonte (IRRF), em
+                          que cada dependente reduz a base de cálculo do IRRF em
+                          um valor fixo, determinado pela Receita Federal
+                          (atualmente R$ 189,59 por dependente). Já a pensão
+                          alimentícia é deduzida integralmente da base de
+                          cálculo do IRRF. O valor do IRRF é calculado de forma
+                          progressiva, conforme a tabela abaixo
+                          {renderFonte(dataIrff?.fontes)}:
+                        </Typography>
+
+                        {dataIrff?.data?.length ? (
+                          <Tabel sx={styles.tablel}>{dataIrff.data}</Tabel>
+                        ) : null}
+                      </>
+                    ),
+                  },
+                  {
+                    title: 'Outros descontos',
+                    details: (
+                      <Typography variant="subtitle1">
+                        Englobam deduções adicionais que não são obrigatórias
+                        por lei, mas que podem ser acordadas com o empregador ou
+                        relacionadas a benefícios contratados. Esses outros
+                        descontos impactam no valor final do salário líquido e
+                        incluem vale-transporte, plano de saúde ou odontológico,
+                        previdência privada, descontos por empréstimos
+                        consignados, mensalidades de associações ou sindicatos,
+                        entre outros.
+                      </Typography>
+                    ),
+                  },
+                  {
+                    title: 'Benefícios',
+                    details: (
+                      <Typography variant="subtitle1">
+                        Os benefícios entram no cálculo como acréscimos ao
+                        salário bruto, aumentando o valor final que o
+                        trabalhador recebe. Isso significa que, mesmo com a
+                        existência de descontos obrigatórios e adicionais, os
+                        benefícios podem compensar ou até superar essas
+                        deduções. Alguns exemplos comuns de benefícios são:
+                        vale-alimentação ou refeição, vale-transporte
+                        subsidiado, comissões ou bonificações, adicional por
+                        insalubridade ou periculosidade, ajuda de custo, horas
+                        extras e adicional noturno, participação nos lucros e
+                        resultados (PLR), entre outros.
+                      </Typography>
+                    ),
+                  },
+                ]}
+              </AccordionGroup>
+            </ButtonAbout>
           </Grid2>
         </Box>
       </FormProvider>

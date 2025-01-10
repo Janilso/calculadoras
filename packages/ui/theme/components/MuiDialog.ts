@@ -11,6 +11,7 @@ export const MuiDialog: Components['MuiDialog'] = {
       backgroundColor: 'white',
       padding: '52px 48px',
       borderRadius: 8,
+      maxHeight: '80vh',
 
       '@media only screen and (max-width: 600px)': {
         margin: 0,

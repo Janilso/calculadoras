@@ -6,9 +6,9 @@ import {
   Routes as RoutesRouter,
 } from 'react-router';
 import { PageNotFound } from '@calculadoras/ui/components';
-import { RoutesType } from './types';
+import { RoutesProps } from './types';
 
-export const Routes: React.FC<RoutesType> = ({ routes }) => {
+export const Routes: React.FC<RoutesProps> = ({ routes }) => {
   return (
     <BrowserRouter>
       <RoutesRouter>

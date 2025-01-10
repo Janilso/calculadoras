@@ -3,6 +3,6 @@ type TRoute = {
   element: React.ReactNode;
 };
 
-export type RoutesType = {
+export type RoutesProps = {
   routes: TRoute[];
 };

@@ -1,3 +1,4 @@
+import AccordionGroup from './AccordionGroup';
 import BasePage from './BasePage';
 import { Button } from './Button';
 import ButtonAbout from './ButtonAbout';
@@ -6,16 +7,19 @@ import Header from './Header';
 import Input from './Input';
 import PageNotFound from './PageNotFound';
 import { Routes } from './Routes';
+import Tabel from './Tabel';
 import TooltipResponsive from './TooltipResponsive';
 
 export {
-  Button,
+  AccordionGroup,
   BasePage,
-  Header,
+  Button,
+  ButtonAbout,
   Footer,
+  Header,
   Input,
-  TooltipResponsive,
   PageNotFound,
   Routes,
-  ButtonAbout,
+  Tabel,
+  TooltipResponsive,
 };

@@ -35,4 +35,23 @@ export const styles = makeSxStyles({
   result: {
     mt: 3,
   },
+  textAbout: {
+    color: 'appColors.primary',
+    '&:not(:first-of-type)': {
+      mt: 2,
+    },
+  },
+  accordion: {
+    mt: 2,
+    '& a': {
+      fontStyle: 'italic',
+      color: 'appColors.primary',
+      '&:after': {
+        bgcolor: 'appColors.primary',
+      },
+    },
+  },
+  tablel: {
+    mt: 2,
+  },
 });
