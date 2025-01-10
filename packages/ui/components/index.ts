@@ -1,5 +1,6 @@
 import BasePage from './BasePage';
 import { Button } from './Button';
+import ButtonAbout from './ButtonAbout';
 import Footer from './Footer';
 import Header from './Header';
 import Input from './Input';
@@ -16,4 +17,5 @@ export {
   TooltipResponsive,
   PageNotFound,
   Routes,
+  ButtonAbout,
 };

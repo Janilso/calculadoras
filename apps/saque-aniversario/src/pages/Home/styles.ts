@@ -41,4 +41,17 @@ export const styles = makeSxStyles({
   result: {
     mt: 5.5,
   },
+  textAbout: {
+    color: 'appColors.primary',
+    '& a': {
+      fontStyle: 'italic',
+      color: 'appColors.primary',
+      '&:after': {
+        bgcolor: 'appColors.primary',
+      },
+    },
+    '&:not(:first-of-type)': {
+      mt: 2,
+    },
+  },
 });
