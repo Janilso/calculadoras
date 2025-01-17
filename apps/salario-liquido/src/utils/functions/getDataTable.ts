@@ -3,7 +3,7 @@ import { GetDataTableType, GetTextByValueType } from './types';
 
 const getTextByValue: GetTextByValueType = (prevValue, value, unLimeted) => {
   if (!prevValue) return `Até ${formatMoney(value)}`;
-  if (unLimeted) return `Acima de ${formatMoney(value)}`;
+  if (unLimeted) return `Acima de ${formatMoney(prevValue)}`;
   return `De ${formatMoney(prevValue + (unLimeted ? 0 : 0.01))} até ${formatMoney(value)}`;
 };
 
