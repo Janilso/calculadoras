@@ -1,4 +1,11 @@
 [[redirects]]
+from = "https://fgts.janilso.com.br/*"
+to = "https://saquefgtsaniversario.com.br/:splat"
+status = 301
+force = true
+
+[[redirects]]
 from = "/*"
 to = "/index.html"
 status = 200
+
